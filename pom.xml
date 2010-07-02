@@ -2,7 +2,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>harschware.sandbox</groupId>
   <artifactId>collections</artifactId>
+  <name>Harschware Collections</name>
   <version>0.0.1-SNAPSHOT</version>
+  <description>A few collection like classes come in pretty handy.</description>
+  <url>http://github.com/harschware/collections</url>
   <dependencies>
 		<dependency>
 			<groupId>junit</groupId>
