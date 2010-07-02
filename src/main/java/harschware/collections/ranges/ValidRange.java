@@ -137,8 +137,9 @@ public class ValidRange<T extends Comparable> extends Range<T> {
 		Sequence<T> sequence = null;
 
 		Class<? extends Comparable> startClazz = start.getClass();
-		String className = "harschware.collections."
+		String className = "harschware.collections.sequences."
 			+ startClazz.getSimpleName() + "Sequence";
+		logger.debug( "Sequence strategy '" + className + "' chosen for '" + startClazz.getCanonicalName() + "'" );
 		
 		try {
 			Class clazz = Class.forName(className);
