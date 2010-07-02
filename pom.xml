@@ -7,6 +7,10 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<description>A few collection like classes come in pretty handy.</description>
 	<url>http://github.com/harschware/collections</url>
+
+	<properties>
+		<java.compiler.version>1.6</java.compiler.version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -67,6 +71,14 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.compiler.version}</source>
+					<target>${java.compiler.version}</target>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
