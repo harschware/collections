@@ -22,7 +22,7 @@ import org.apache.commons.lang.builder.CompareToBuilder;
  * Adapted from http://forums.sun.com/thread.jspa?threadID=5132045
  * 
  * 
- * @author tharsch
+ * @author harschware
  * 
  * @param <L>
  * @param <R>

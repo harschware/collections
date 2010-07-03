@@ -23,7 +23,7 @@ import java.util.Iterator;
  * An iterator that provides no next element and guarantees to not support next
  * or remove method.
  * 
- * @author tharsch
+ * @author harschware
  * 
  * @param <T>
  */

@@ -16,7 +16,6 @@
 
 package harschware.collections.ranges;
 
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -34,21 +33,26 @@ import org.apache.log4j.Logger;
  * @see http://martinfowler.com/eaaDev/Range.html
  * @see http://commons.apache.org/lang/api-2.3/org/apache/commons/lang/math/Range.html
  * 
- *      TODO: implement abuts, partitionedBy,
- *      isContiguous all of which require sequences. See
- *      gleichmann
  * 
  * @param <T>
  */
 @SuppressWarnings("unchecked")
-public abstract class Range<T extends Comparable> implements Comparable<Range<T>>, Iterable<T> {
+public abstract class Range<T extends Comparable> implements
+		Comparable<Range<T>>, Iterable<T> {
 	protected final static Logger logger = Logger.getLogger(Range.class);
 
-	protected T start = null;
-	protected T end = null;
+	protected final T start;
+	protected final T end;
 
 	protected Range() {
-	};
+		start = null;
+		end = null;
+	} // end constructor
+
+	protected Range(final T start, final T end) {
+		this.start = start;
+		this.end = end;
+	} // end constructor
 
 	public static <S extends Comparable> Range<S> create(S start, S end) {
 		if (start.compareTo(end) > 0)
@@ -61,9 +65,9 @@ public abstract class Range<T extends Comparable> implements Comparable<Range<T>
 
 	public abstract boolean after(T value);
 
-	public abstract boolean contains(T value) ;
+	public abstract boolean contains(T value);
 
-	public abstract boolean overlaps(Range<T> arg) ;
+	public abstract boolean overlaps(Range<T> arg);
 
 	/**
 	 * @return the start
@@ -79,14 +83,13 @@ public abstract class Range<T extends Comparable> implements Comparable<Range<T>
 		return end;
 	} // end getter
 
-
 	@Override
 	public abstract boolean equals(Object o);
 
 	@Override
 	public abstract int hashCode();
 
-	public abstract int compareTo(Range<T> other) ;
+	public abstract int compareTo(Range<T> other);
 
 	public abstract boolean isEmpty();
 
@@ -95,12 +98,13 @@ public abstract class Range<T extends Comparable> implements Comparable<Range<T>
 	public abstract Range<T> gap(Range<T> arg);
 
 	public abstract boolean contains(Range<T> other);
-	
+
 	public abstract boolean abuts(Range<T> arg);
-	
+
 	public abstract boolean partitionedBy(Collection<Range<T>> ranges);
 
-	public static <S extends Comparable> boolean isContiguous(Collection<Range<S>> ranges) {
+	public static <S extends Comparable> boolean isContiguous(
+			Collection<Range<S>> ranges) {
 		// need a copy so as not to disturb the order of the input collection
 		logger.debug("isContiguous making list copy of input collection");
 		List<Range<S>> listCopy = new ArrayList<Range<S>>(ranges);
@@ -114,11 +118,13 @@ public abstract class Range<T extends Comparable> implements Comparable<Range<T>
 	 * @param ranges
 	 * @return
 	 */
-	protected static <S extends Comparable> boolean isContiguousIfSorted(List<Range<S>> ranges ) {
+	protected static <S extends Comparable> boolean isContiguousIfSorted(
+			List<Range<S>> ranges) {
 		logger.debug("isContiguousIfSorted sorting list");
 		Collections.sort(ranges);
-		for (int i=0; i<ranges.size() - 1; i++) {
-			if (!ranges.get(i).abuts(ranges.get(i+1)) ) return false;
+		for (int i = 0; i < ranges.size() - 1; i++) {
+			if (!ranges.get(i).abuts(ranges.get(i + 1)))
+				return false;
 		} // end for
 		return true;
 	} // end method
@@ -130,14 +136,14 @@ public abstract class Range<T extends Comparable> implements Comparable<Range<T>
 	 * @param ranges
 	 * @return
 	 */
-	public static <S extends Comparable> Range<S> collapse(Collection<Range<S>> ranges) {
+	public static <S extends Comparable> Range<S> collapse(
+			Collection<Range<S>> ranges) {
 		// need a copy so as not to disturb the order of the input collection
 		logger.debug("collapse making list copy of input collection");
-		List<Range<S>> listCopy =  new ArrayList<Range<S>>(ranges);
+		List<Range<S>> listCopy = new ArrayList<Range<S>>(ranges);
 		return sortAndCollapse(listCopy);
 	} // end method
 
-	
 	/**
 	 * Has side effect of sorting the input list.
 	 * 
@@ -145,12 +151,14 @@ public abstract class Range<T extends Comparable> implements Comparable<Range<T>
 	 * @param ranges
 	 * @return
 	 */
-	protected static <S extends Comparable> Range<S> sortAndCollapse(List<Range<S>> ranges) {
+	protected static <S extends Comparable> Range<S> sortAndCollapse(
+			List<Range<S>> ranges) {
 		logger.debug("sortAndCollapse called");
-		if( ! isContiguousIfSorted(ranges) )
+		if (!isContiguousIfSorted(ranges))
 			return (Range<S>) EmptyRange.INSTANCE;
 		else
-			return Range.create(ranges.get(0).getStart(), ranges.get(ranges.size() - 1).getEnd());
+			return Range.create(ranges.get(0).getStart(), ranges.get(
+					ranges.size() - 1).getEnd());
 	} // end method
-	
+
 } // end class

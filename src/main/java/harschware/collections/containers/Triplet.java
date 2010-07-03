@@ -21,7 +21,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * 
- * @author Tim Harsch
+ * @author harschware
  * 
  * @param <L>
  * @param <M>

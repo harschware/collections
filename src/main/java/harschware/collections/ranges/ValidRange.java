@@ -29,7 +29,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 /**
  * 
  * 
- * @author tharsch
+ * @author harschware
  * 
  * @see http://gleichmann.wordpress.com/2008/01/21/declarative-programming-a-range-type-for-java/
  * @see http://martinfowler.com/eaaDev/Range.html
@@ -39,7 +39,8 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  */
 @SuppressWarnings("unchecked")
 public class ValidRange<T extends Comparable> extends Range<T> {
-	private ValidRange() {
+	private ValidRange( final T start, final T end ) {
+		super( start, end );
 	};
 
 	/**
@@ -51,9 +52,7 @@ public class ValidRange<T extends Comparable> extends Range<T> {
 	 * @return
 	 */
 	static <S extends Comparable> Range<S> newInstance(S start, S end) {
-		Range<S> newRange = new ValidRange();
-		newRange.start = start;
-		newRange.end = end;
+		Range<S> newRange = new ValidRange(start,end);
 		return newRange;
 	} // end method
 	
@@ -196,7 +195,7 @@ public class ValidRange<T extends Comparable> extends Range<T> {
 	public boolean partitionedBy(Collection<Range<T>> ranges) {
 		// need a copy so as not to disturb the order of the input collection
 		logger.debug("partitionedBy making list copy of input collection");
-		List<Range<T>> listCopy =  new ArrayList<Range<T>>(ranges);
+		List<Range<T>> listCopy = new ArrayList<Range<T>>(ranges);
 		return Range.sortAndCollapse(listCopy).equals(this);
 	} // end method
 
