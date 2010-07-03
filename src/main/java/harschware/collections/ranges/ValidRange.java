@@ -18,14 +18,13 @@ package harschware.collections.ranges;
 
 import harschware.collections.sequences.Sequence;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang.builder.CompareToBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
-
-import com.google.common.collect.Lists;
 
 /**
  * 
@@ -197,7 +196,7 @@ public class ValidRange<T extends Comparable> extends Range<T> {
 	public boolean partitionedBy(Collection<Range<T>> ranges) {
 		// need a copy so as not to disturb the order of the input collection
 		logger.debug("partitionedBy making list copy of input collection");
-		List<Range<T>> listCopy = Lists.newArrayList(ranges);
+		List<Range<T>> listCopy =  new ArrayList<Range<T>>(ranges);
 		return Range.sortAndCollapse(listCopy).equals(this);
 	} // end method
 

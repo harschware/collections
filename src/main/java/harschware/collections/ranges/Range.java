@@ -17,14 +17,13 @@
 package harschware.collections.ranges;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-
-import com.google.common.collect.Lists;
 
 /**
  * 
@@ -104,7 +103,7 @@ public abstract class Range<T extends Comparable> implements Comparable<Range<T>
 	public static <S extends Comparable> boolean isContiguous(Collection<Range<S>> ranges) {
 		// need a copy so as not to disturb the order of the input collection
 		logger.debug("isContiguous making list copy of input collection");
-		List<Range<S>> listCopy = Lists.newArrayList(ranges);
+		List<Range<S>> listCopy = new ArrayList<Range<S>>(ranges);
 		return isContiguousIfSorted(listCopy);
 	} // end method
 
@@ -134,7 +133,7 @@ public abstract class Range<T extends Comparable> implements Comparable<Range<T>
 	public static <S extends Comparable> Range<S> collapse(Collection<Range<S>> ranges) {
 		// need a copy so as not to disturb the order of the input collection
 		logger.debug("collapse making list copy of input collection");
-		List<Range<S>> listCopy = Lists.newArrayList(ranges);
+		List<Range<S>> listCopy =  new ArrayList<Range<S>>(ranges);
 		return sortAndCollapse(listCopy);
 	} // end method
 

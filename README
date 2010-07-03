@@ -1,5 +1,11 @@
-Here is the first content for my collections API README.
+This package contains a few handy classes that are collection like in 
+nature.  The classes include handy general purpose Pair and Triplet classes
+as well as a very handy Range class which uses a Sequence strategy that 
+allows it to treat a Range discretely and iterate over Ranges and determine 
+other useful properties when comparing Ranges such as abuts and the like.    
 
-New Content 7/1/2010
+The package is licensed under the Apache License and all source must be 
+handled according to the provisions of that license. 
 
-Some more new content, same day.
+Tim Harsch
+harschware@yahoo.com

@@ -5,9 +5,27 @@
 	<artifactId>collections</artifactId>
 	<name>Harschware Collections</name>
 	<version>0.0.1-SNAPSHOT</version>
-	<description>A few collection like classes come in pretty handy.</description>
+	<description>A few collection like classes that come in pretty handy.</description>
 	<url>http://github.com/harschware/collections</url>
-
+	<developers>
+		<developer>
+			<id>harschware</id>
+			<name>Tim Harsch</name>
+			<email>harschware@yahoo.com</email>
+			<organization></organization>
+			<roles>
+				<role>Project Lead</role>
+				<role>Developer</role>
+			</roles>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>manual</distribution>
+		</license>
+	</licenses>
 	<properties>
 		<java.compiler.version>1.6</java.compiler.version>
 	</properties>
@@ -17,21 +35,6 @@
 			<artifactId>junit</artifactId>
 			<version>4.4</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>2.5.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>2.5.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>2.5.6</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -47,6 +50,7 @@
 			<groupId>com.google.collections</groupId>
 			<artifactId>google-collections</artifactId>
 			<version>1.0</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>joda-time</groupId>
