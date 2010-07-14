@@ -1,7 +1,10 @@
+Harschware Collections
+http://github.com/harschware/collections
+
 This package contains a few handy classes that are collection like in 
-nature.  The classes include handy general purpose Pair and Triplet classes
+nature.  The classes include general purpose Pair and Triplet classes
 as well as a very handy Range class which uses a Sequence strategy that 
-allows it to treat a Range discretely and iterate over Ranges and determine 
+allows it to treat a Range discretely and iterate over Ranges and/or determine 
 other useful properties when comparing Ranges such as abuts and the like.    
 
 The package is licensed under the Apache License and all source must be 
