@@ -159,8 +159,6 @@ public class TestRange {
 		Assert.assertTrue(r2.abuts(r1));
 		Assert.assertFalse(r1.abuts(r3));
 		Assert.assertFalse(r3.abuts(r1));
-
-		Assert.assertFalse(true);
 	} // end test
 
 	@SuppressWarnings("unchecked")
